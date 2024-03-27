@@ -16,13 +16,13 @@ public class TestUtil {
 
   @Test
   public void testArgLengthOne(){
-    assertFalse(c.compute(new int[]{1}));
+    assertFalse(c.compute(1));
   }
 
   @Test
   public void testArgLengthEven(){
-    assertFalse(c.compute(new int[]{2,4,6,8}));
-    assertFalse(c.compute(new int[]{2,4}));
+    assertFalse(c.compute(2,4,6,8));
+    assertFalse(c.compute(2,4));
   }
 
   @Test
@@ -31,8 +31,8 @@ public class TestUtil {
     //assertFalse(c.compute(new int[]{3,4,0,5}));
     boolean failed = true;
     try{
-      c.compute(new int[]{2,0,4,6});
-    }catch (Exception e){
+      c.compute(2,0,4,6);
+    }catch (RuntimeException e){
       failed = false;
     }
     assertTrue(failed);
@@ -50,8 +50,8 @@ public class TestUtil {
 
   @Test
   public void testComputeMain(){
-    assertTrue(c.compute(new int[]{2,4,6}));
-    assertFalse(c.compute(new int[]{3,5,11}));
+    assertTrue(c.compute(2,4,6));
+    assertFalse(c.compute(3,5,11));
 
   }
 }
