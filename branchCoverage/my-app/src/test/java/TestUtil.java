@@ -25,26 +25,9 @@ public class TestUtil {
     assertFalse(c.compute(2,4));
   }
 
-  @Test
+  @Test(expected = RuntimeException.class)
   public void testArgZeroThrows(){
-    //assertFalse(c.compute(new int[]{2,0,4,6}));
-    //assertFalse(c.compute(new int[]{3,4,0,5}));
-    boolean failed = true;
-    try{
-      c.compute(2,0,4,6);
-    }catch (RuntimeException e){
-      failed = false;
-    }
-    assertTrue(failed);
-
-    /*
-    try{
-      c.compute(new int[]{3,4,0,5});
-    }catch (Exception e){
-      assertNotNull(e.getMessage());
-    }
-    fail("Expected exception was not thrown");
-     */
+    assertFalse(c.compute(0,2,4));
   }
 
 

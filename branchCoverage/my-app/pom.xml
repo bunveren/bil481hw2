@@ -12,44 +12,54 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- Define the versions of JUnit and Mockito -->
+    <junit.version>4.12</junit.version>
+    <mockito.version>3.12.4</mockito.version>
+    <!-- Define the version of Jacoco -->
+    <jacoco.version>0.8.7</jacoco.version>
   </properties>
 
   <dependencies>
+    <!-- JUnit Dependency -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>${junit.version}</version>
       <scope>test</scope>
     </dependency>
-
-    <!-- Update the version of Mockito if necessary -->
+    <!-- Mockito Dependency -->
     <dependency>
       <groupId>org.mockito</groupId>
       <artifactId>mockito-core</artifactId>
-      <version>3.12.4</version>
+      <version>${mockito.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
+      <!-- Surefire Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0</version>
         <configuration>
           <!-- Consider removing this configuration unless necessary -->
           <!-- <useSystemClassLoader>false</useSystemClassLoader> -->
         </configuration>
       </plugin>
 
-      <!-- Consider updating to a more recent version of Jacoco -->
+      <!-- Jacoco Plugin -->
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
-        <version>0.8.7</version>
+        <version>${jacoco.version}</version>
         <configuration>
           <excludes>
-            <exclude>com/mycompany/app/**/*</exclude>
+            <!-- Exclude test code from code coverage -->
+            <exclude>**/Test*.class</exclude>
+            <exclude>**/*Test.class</exclude>
+            <exclude>**/*TestCase.class</exclude>
           </excludes>
         </configuration>
         <executions>
